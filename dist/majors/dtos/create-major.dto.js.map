@@ -1,0 +1,1 @@
+{"version":3,"file":"create-major.dto.js","sourceRoot":"","sources":["../../../src/majors/dtos/create-major.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,qDAAuD;AAEvD,MAAa,cAAc;CAQ1B;AARD,wCAQC;AALC;IAFC,IAAA,4BAAU,EAAC,EAAE,OAAO,EAAE,mBAAmB,EAAE,CAAC;IAC5C,IAAA,0BAAQ,GAAE;;6CACG;AAId;IAFC,IAAA,4BAAU,EAAC,EAAE,OAAO,EAAE,qBAAqB,EAAE,CAAC;IAC9C,IAAA,0BAAQ,GAAE;;+CACK"}
