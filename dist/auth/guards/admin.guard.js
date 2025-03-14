@@ -15,7 +15,8 @@ let AdminGuard = class AdminGuard {
         const user = request.user;
         const configService = new config_1.ConfigService();
         const ADMIN_EMAIL_1 = configService.get('ADMIN_EMAIL_1');
-        return user && (user.email === ADMIN_EMAIL_1);
+        const ADMIN_EMAIL_2 = configService.get('ADMIN_EMAIL_2');
+        return user && (user.email === ADMIN_EMAIL_1 || user.email === ADMIN_EMAIL_2);
     }
 };
 exports.AdminGuard = AdminGuard;

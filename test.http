@@ -1,0 +1,71 @@
+### Variables
+@baseUrl = http://localhost:3002/api
+@authToken = 
+@materialId = 
+
+### Register a user (if you don't have one already)
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "fullName": "Test User",
+  "password": "password123"
+}
+
+### Login to get auth token
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "",
+  "password": ""
+}
+
+### Store the auth token from the login response
+// @authToken = {{login.response.body.access_token}}
+
+
+### Create a new playlist
+# @name createPlaylist
+POST {{baseUrl}}/playlists
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "name": "My Study Materials2"
+}
+
+### Store the playlist ID from the response
+@playlistId = 
+
+### Get all playlists for the current user
+GET {{baseUrl}}/playlists
+Authorization: Bearer {{authToken}}
+
+### Get a specific playlist
+GET {{baseUrl}}/playlists/{{playlistId}}
+Authorization: Bearer {{authToken}}
+
+### Add a material to the playlist (using material ID)
+POST {{baseUrl}}/playlists/{{playlistId}}/materials
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "materialId": "{{materialId}}"
+}
+
+### Add another material to the playlist (using another material ID)
+POST {{baseUrl}}/playlists/{{playlistId}}/materials
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "materialId": "another-material-id-here"
+}
+
+### Delete a playlist
+DELETE {{baseUrl}}/playlists/{{playlistId}}
+Authorization: Bearer {{authToken}}

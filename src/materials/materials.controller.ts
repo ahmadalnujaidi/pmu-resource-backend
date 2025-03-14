@@ -37,6 +37,12 @@ export class MaterialsController {
     );
   }
 
+  @Get("materials")
+  @UseGuards(JwtAuthGuard)
+  async findAll() {
+    return this.materialsService.findAll();
+  }
+
   @Get("course/:courseId/professor/:professorId")
   @UseGuards(JwtAuthGuard) // Optional: Use this guard if you want to restrict access
   async findMaterialsByCourseAndProfessor(

@@ -1,3 +1,4 @@
+import { Playlist } from '../../playlists/entities/playlist.entity';
 export declare class User {
     id: string;
     email: string;
@@ -5,4 +6,5 @@ export declare class User {
     password: string;
     createdAt: Date;
     updatedAt: Date;
+    playlists: Playlist[];
 }

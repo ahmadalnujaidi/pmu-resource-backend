@@ -9,6 +9,7 @@ export declare class AuthController {
         fullName: string;
         createdAt: Date;
         updatedAt: Date;
+        playlists: import("../playlists/entities/playlist.entity").Playlist[];
     }>;
     login(req: any): Promise<{
         access_token: string;

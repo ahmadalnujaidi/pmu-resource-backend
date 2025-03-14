@@ -18,6 +18,7 @@ const materials_module_1 = require("./materials/materials.module");
 const database_config_1 = require("./config/database.config");
 const suggestions_module_1 = require("./suggestions/suggestions.module");
 const approvals_module_1 = require("./approvals/approvals.module");
+const playlists_module_1 = require("./playlists/playlists.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -32,7 +33,8 @@ exports.AppModule = AppModule = __decorate([
             professors_module_1.ProfessorsModule,
             materials_module_1.MaterialsModule,
             suggestions_module_1.SuggestionsModule,
-            approvals_module_1.ApprovalsModule
+            approvals_module_1.ApprovalsModule,
+            playlists_module_1.PlaylistsModule,
         ],
     })
 ], AppModule);

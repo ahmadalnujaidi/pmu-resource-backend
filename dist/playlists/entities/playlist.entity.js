@@ -9,43 +9,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.Playlist = void 0;
 const typeorm_1 = require("typeorm");
-const class_transformer_1 = require("class-transformer");
-const playlist_entity_1 = require("../../playlists/entities/playlist.entity");
-let User = class User {
+const user_entity_1 = require("../../users/entities/user.entity");
+const material_entity_1 = require("../../materials/entities/material.entity");
+let Playlist = class Playlist {
 };
-exports.User = User;
+exports.Playlist = Playlist;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
     __metadata("design:type", String)
-], User.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ unique: true }),
-    __metadata("design:type", String)
-], User.prototype, "email", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ name: 'full_name' }),
-    __metadata("design:type", String)
-], User.prototype, "fullName", void 0);
+], Playlist.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
-    (0, class_transformer_1.Exclude)(),
     __metadata("design:type", String)
-], User.prototype, "password", void 0);
+], Playlist.prototype, "name", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)({ name: 'created_at' }),
     __metadata("design:type", Date)
-], User.prototype, "createdAt", void 0);
+], Playlist.prototype, "createdAt", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)({ name: 'updated_at' }),
     __metadata("design:type", Date)
-], User.prototype, "updatedAt", void 0);
+], Playlist.prototype, "updatedAt", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => playlist_entity_1.Playlist, playlist => playlist.user),
+    (0, typeorm_1.ManyToOne)(() => user_entity_1.User, user => user.playlists),
+    (0, typeorm_1.JoinColumn)({ name: 'user_id' }),
+    __metadata("design:type", user_entity_1.User)
+], Playlist.prototype, "user", void 0);
+__decorate([
+    (0, typeorm_1.ManyToMany)(() => material_entity_1.Material),
+    (0, typeorm_1.JoinTable)({
+        name: 'playlist_materials',
+        joinColumn: { name: 'playlist_id', referencedColumnName: 'id' },
+        inverseJoinColumn: { name: 'material_id', referencedColumnName: 'id' },
+    }),
     __metadata("design:type", Array)
-], User.prototype, "playlists", void 0);
-exports.User = User = __decorate([
-    (0, typeorm_1.Entity)('users')
-], User);
-//# sourceMappingURL=user.entity.js.map
+], Playlist.prototype, "materials", void 0);
+exports.Playlist = Playlist = __decorate([
+    (0, typeorm_1.Entity)('playlists')
+], Playlist);
+//# sourceMappingURL=playlist.entity.js.map
