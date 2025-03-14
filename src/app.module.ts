@@ -9,7 +9,6 @@ import { MaterialsModule } from './materials/materials.module';
 import { databaseConfig } from './config/database.config';
 import { SuggestionsModule } from './suggestions/suggestions.module';
 import { ApprovalsModule } from './approvals/approvals.module';
-import { PlaylistsModule } from './playlists/playlists.module';
 
 @Module({
   imports: [
@@ -22,7 +21,6 @@ import { PlaylistsModule } from './playlists/playlists.module';
     MaterialsModule,
     SuggestionsModule,
     ApprovalsModule,
-    PlaylistsModule
   ],
 })
 export class AppModule {}
