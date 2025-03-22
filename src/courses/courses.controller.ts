@@ -1,11 +1,20 @@
-import { Controller, Post, Body, Get, Param, UseGuards, Put } from '@nestjs/common';
-import { CoursesService } from './courses.service';
-import { CreateCourseDto } from './dtos/create-course.dto';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { AdminGuard } from '../auth/guards/admin.guard';
-import { UpdateCourseDto } from './dtos/update-course.dto';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  Param,
+  UseGuards,
+  Put,
+  Delete,
+} from "@nestjs/common";
+import { CoursesService } from "./courses.service";
+import { CreateCourseDto } from "./dtos/create-course.dto";
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+import { AdminGuard } from "../auth/guards/admin.guard";
+import { UpdateCourseDto } from "./dtos/update-course.dto";
 
-@Controller('courses')
+@Controller("courses")
 export class CoursesController {
   constructor(private readonly coursesService: CoursesService) {}
 
@@ -20,15 +29,24 @@ export class CoursesController {
     return this.coursesService.findAll();
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
+  @Get(":id")
+  async findOne(@Param("id") id: string) {
     return this.coursesService.findOne(id);
   }
 
   // update course and add majors to it
-  @Put(':id')
+  @Put(":id")
   @UseGuards(JwtAuthGuard, AdminGuard)
-  async update(@Param('id') id: string, @Body() updateCourseDto: UpdateCourseDto) {
+  async update(
+    @Param("id") id: string,
+    @Body() updateCourseDto: UpdateCourseDto
+  ) {
     return this.coursesService.update(id, updateCourseDto);
   }
-} 
+  // delete
+  @Delete(":id")
+  @UseGuards(JwtAuthGuard, AdminGuard)
+  async remove(@Param("id") id: string) {
+    return this.coursesService.remove(id);
+  }
+}
